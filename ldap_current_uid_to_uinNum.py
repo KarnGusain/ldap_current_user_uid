@@ -4,7 +4,7 @@
 
 import subprocess
 
-def CheckUid():
+def UserID():
     proc = subprocess.Popen("ldapsearch -h ldapserver -xLLLb 'ou=people,o=example.com' uid uidNumber", shell=True, stdout=subprocess.PIPE)
     info_str = proc.stdout.read().decode('utf8')
     str_info = info_str.splitlines()
@@ -15,7 +15,7 @@ def CheckUid():
             for line in lines.splitlines():
                      print(line, end=' ' if line.startswith("uid:")  else "\n")
 
-CheckUid()
+UserID()
 
 
 $ ./ldap_current_uid_to_uinNum.py 
